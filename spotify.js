@@ -13,6 +13,8 @@ const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
 
 const EndpointGetToken = 'https://accounts.spotify.com/api/token'
 const EndpointGetTopTopTracks = 'https://api.spotify.com/v1/me/top/tracks'
+const EndpointGetRecentlyPlayed =
+  "https://api.spotify.com/v1/me/player/recently-played"
 
 const getAccessToken = async () => {
   const resp = await fetch(EndpointGetToken, {

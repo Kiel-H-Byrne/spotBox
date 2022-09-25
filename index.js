@@ -13,11 +13,12 @@ const octo = new Octokit({
 async function main() {
   envCheck()
   const json = await getTopTracks()
+  console.log(json)
   await updateTopTracks(json)
 }
 
 async function envCheck() {
-  if (!GH_TOKEN || !GIST_ID) {
+  if (!github_token || !gist_id) {
     throw new Error(
       `
         spotify-box ran into an issue for getting your Environment Secrets
@@ -25,7 +26,7 @@ async function envCheck() {
           GH_TOKEN
           GIST_ID
         For more information, see the README.md: https://github.com/izayl/spotify-box#-environment-secrets
-      `
+      `,
     )
   }
 }
