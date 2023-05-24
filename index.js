@@ -13,7 +13,6 @@ const octo = new Octokit({
 async function main() {
   envCheck();
   const json = await getPlaylist();
-  console.log(json);
   await updateWithPlaylistTracks(json);
 }
 
@@ -96,6 +95,9 @@ async function updateWithPlaylistTracks(json) {
     throw error;
   }
   const playlistName = json.name
+  console.log(json.tracks)
+  console.log('+================================================+')
+  console.log(json.tracks)
   //json = {name: 'My Top Tracks', tracks: {items: [{name: ''}]}}
   const tracks = json.tracks.items.map((item) => ({
     name: item.name,
