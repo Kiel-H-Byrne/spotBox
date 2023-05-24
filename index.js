@@ -109,10 +109,10 @@ async function updateWithPlaylistTracks(json) {
   for (let index = 0; index < Math.min(tracks.length, 10); index++) {
     let { name, artist } = tracks[index];
     name = truncate(name, 25);
-    artist = truncate(artist, 19);
+    artist = truncate(artist, 29);
 
     const line = [
-      name.padEnd(34 + name.length - eaw.length(name)),
+      name.padEnd(24 + name.length - eaw.length(name)),
       artist.padStart(20 + artist.length - eaw.length(artist)),
     ];
     lines.push(line.join(''));
@@ -124,7 +124,7 @@ async function updateWithPlaylistTracks(json) {
       gist_id,
       files: {
         [filename]: {
-          filename: `🎵 My Study Playlist in Spotify - ${playlistName}`,
+          filename: `🎵 Study Music - ${playlistName}`,
           content: lines.join('\n'),
         },
       },
