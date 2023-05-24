@@ -95,13 +95,11 @@ async function updateWithPlaylistTracks(json) {
     throw error;
   }
   const playlistName = json.name
-  console.log(json.tracks)
-  console.log('+================================================+')
-  console.log(json.tracks)
+  console.log(json.tracks.items[0].track)
   //json = {name: 'My Top Tracks', tracks: {items: [{name: ''}]}}
   const tracks = json.tracks.items.map((item) => ({
-    name: item.name,
-    artist: item.artists
+    name: item.track.name,
+    artist: item.track.artists
       .map((artist) => artist.name.trim())
       .join(' & '),
   }));
