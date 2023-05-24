@@ -13,8 +13,11 @@ const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
 
 const EndpointGetToken = 'https://accounts.spotify.com/api/token'
 const EndpointGetTopTopTracks = 'https://api.spotify.com/v1/me/top/tracks'
+// not getting this endpoint.
 const EndpointGetRecentlyPlayed =
   "https://api.spotify.com/v1/me/player/recently-played"
+const EndpointGetPlaylist =
+  "https://api.spotify.com/v1/playlists/5hwUwg3pIv9AUSe2Xv1pwU?market=US"
 
 const getAccessToken = async () => {
   const resp = await fetch(EndpointGetToken, {
@@ -34,6 +37,17 @@ exports.getTopTracks = async function getTopTracks() {
   const { access_token } = await getAccessToken()
 
   const resp = await fetch(`${EndpointGetTopTopTracks}?time_range=short_term`, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  })
+
+  return resp.json()
+}
+exports.getPlaylist = async function getPlaylist() {
+  const { access_token } = await getAccessToken()
+
+  const resp = await fetch(`${EndpointGetPlaylist}`, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
