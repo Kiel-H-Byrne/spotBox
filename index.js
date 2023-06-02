@@ -124,7 +124,7 @@ async function updateWithPlaylistTracks(json) {
       gist_id,
       files: {
         [filename]: {
-          filename: `🎵 Study Music - ${playlistName}`,
+          filename: `🎵 Coding Music - ${playlistName}`,
           content: lines.join('\n'),
         },
       },
